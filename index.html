@@ -43,13 +43,23 @@
         <form class="card bg-light">
             <div class="card-header">Добавить новую задачу</div>
             <div class="card-body">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Введите название задачи">
-                    
-                </div>
+                <form id="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Введите название задачи">
+                        <small id="emailHelp" class="form-text text-muted">
+                            Вы можете добавить несколько задач, разделив их запятой
+                        </small>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg active">Добавить</button>
+                </form> 
             </div>
         </form>
     </div>
-    
+
+    <div class="copyright text-center py-3 bg-light mt-5 mb-0">
+        Ссылка на портфолио: <a href="https://akezhev.github.io/akezhev/">Akezhev Timur</a>
+    </div>
+
+    <script src="js/main.js"></script>  
 </body>
 </html>
