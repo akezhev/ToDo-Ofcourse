@@ -18,6 +18,26 @@
 
         <div class="card mb-4">
 
+            <ul id="taskList" class="list-group list-group-flush">
+
+                <li id="emptyList" class="list-group-item empty-list d-flex justify-content-center align-items-center flex-column">
+                    <img src="./img/leaf.svg" alt="Empty" width="128" class="mt-3 mb-3">
+                    <div class="empty-list__title">Список дел пуст</div>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between task-item">
+                    <span class="task-title">Задача 1</span>
+                    <div class="task-item__buttons">
+                        <button type="button" data-action="done" class="btn-action">
+                            <img src="./img/done.svg" alt="Done" width="28" height="28">
+                        </button>
+                        <button type="button" data-action="delete" class="btn-action">
+                            <img src="./img/delete.svg" alt="Delete" width="28" height="28">
+                        </button>
+                    </div>
+                </li>
+
+            </ul>
 
         </div>
 
