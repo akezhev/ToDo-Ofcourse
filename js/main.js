@@ -1,22 +1,14 @@
 const form = document.querySelector('#form');
 const taskInput = document.querySelector('#taskInput');
-const taskList = document.querySelector('#taskList');
+const tasksList = document.querySelector('#tasksList');
 
-
+// Добавление задачи
 form.addEventListener('submit', function(event) {
     // Отменяем стандартное поведение формы
     event.preventDefault();
 
-    // Проверяем, есть ли текст в input
-    if (!taskInput.value) {
-        return;
-    }
-
-
     // Получаем текст задачи из input
     const taskText = taskInput.value;
-
-    console.log(taskText);
 
     // Создаем HTML для новой задачи
     const taskHTML = `
@@ -34,12 +26,10 @@ form.addEventListener('submit', function(event) {
     `;
 
     // Добавляем задачу в список    
-    taskList.insertAdjacentHTML('beforeend', taskHTML);
+    tasksList.insertAdjacentHTML('beforeend', taskHTML);
 
-    // Очищаем input
+    // Очищаем поле ввода
     taskInput.value = '';
-    
-    
 });
 
 

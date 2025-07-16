@@ -18,7 +18,7 @@
 
         <div class="card mb-4">
 
-            <ul id="taskList" class="list-group list-group-flush">
+            <ul id="tasksList" class="list-group list-group-flush">
 
                 <li id="emptyList" class="list-group-item empty-list d-flex justify-content-center align-items-center flex-column">
                     <img src="./img/leaf.svg" alt="Empty" width="128" class="mt-3 mb-3">
@@ -44,15 +44,15 @@
         <form class="card bg-light">
             <div class="card-header">Добавить новую задачу</div>
             <div class="card-body">
-                <form id="form">
+                <div id="form">
                     <div class="form-group">
-                        <input id="taskInput" type="text" class="form-control" placeholder="Введите название задачи">
+                        <input type="text" class="form-control" id="taskInput" placeholder="Введите название задачи">
                         <small id="emailHelp" class="form-text text-muted">
                             Вы можете добавить несколько задач, разделив их запятой
                         </small>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg active">Добавить</button>
-                </form> 
+                </div> 
             </div>
         </form>
         
