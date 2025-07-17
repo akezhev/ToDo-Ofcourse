@@ -8,7 +8,13 @@ form.addEventListener('submit', function(event) {
     event.preventDefault();
 
     // Получаем текст задачи из input
-    const taskText = taskInput.value;
+    const taskText = taskInput.value.trim();
+
+    // Проверяем, что поле не пустое
+    if (!taskText) {
+        alert('Пожалуйста, введите текст задачи!');
+        return;
+    }
 
     // Создаем HTML для новой задачи
     const taskHTML = `
