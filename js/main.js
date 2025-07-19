@@ -2,8 +2,11 @@ const form = document.querySelector('#form');
 const taskInput = document.querySelector('#taskInput');
 const tasksList = document.querySelector('#tasksList');
 const emptyList = document.querySelector('#emptyList');
+
 // Добавление задачи
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', addTask);
+
+function addTask(event) {
     // Отменяем стандартное поведение формы
     event.preventDefault();
 
@@ -38,9 +41,8 @@ form.addEventListener('submit', function(event) {
     taskInput.value = '';
     taskInput.focus();
 
+    // Проверка. Если в списке более 1-го элемента, скрываем блок
     if(tasksList.children.length > 1) {
         emptyList.classList.add('none')
     }
-});
-
-
+}
