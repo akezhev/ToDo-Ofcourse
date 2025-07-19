@@ -8,3 +8,19 @@ button {
     border: none;
     background-color: transparent;
 }
+
+.none {
+    display: none !important;
+}
+
+.float-right {
+    float: right;
+}
+
+.copyright {
+    margin-top: 40px;
+    font-size: 14px;
+    color: gray;
+    text-align: center;
+    margin-bottom: 30px;
+}
