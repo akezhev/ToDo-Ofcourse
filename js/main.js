@@ -7,7 +7,7 @@ const emptyList = document.querySelector('#emptyList');
 form.addEventListener('submit', addTask);
 
 // Удаление задачи
-
+tasksList.addEventListener('click', deleteTask);
 
 // Функции
 function addTask(event) {
@@ -51,3 +51,16 @@ function addTask(event) {
     }
 }
 
+function deleteTask(event) {
+
+    // Проверяем что клик был по кнопке "Удалить задачу"
+    if (event.target.dataset.action === 'delete') {
+       const parentNode = event.target.closest('.list-group-item');
+       parentNode.remove();
+    }
+    
+    // Проверка. Если в списке задач один элемент, показываем блок "Список дел пуст"
+    if (tasksList.children.length === 1) {
+        emptyList.classList.remove('none');
+    }
+}
