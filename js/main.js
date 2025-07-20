@@ -6,6 +6,10 @@ const emptyList = document.querySelector('#emptyList');
 // Добавление задачи
 form.addEventListener('submit', addTask);
 
+// Удаление задачи
+
+
+// Функции
 function addTask(event) {
     // Отменяем стандартное поведение формы
     event.preventDefault();
@@ -46,3 +50,4 @@ function addTask(event) {
         emptyList.classList.add('none')
     }
 }
+
