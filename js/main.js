@@ -73,5 +73,6 @@ function doneTask(event) {
     if (event.target.dataset.action === 'done') {
         const parentNode = event.target.closest('.list-group-item');
         const taskTitle = parentNode.querySelector('.task-title');
+        taskTitle.classList.toggle('task-title--done');
     }
 }
