@@ -55,17 +55,18 @@ function addTask(event) {
 }
 
 function deleteTask(event) {
+    // Проверяем если клик был НЕ по кнопке "Удалить задачу"
+    if (event.target.dataset.action !== 'delete') return;
 
-    // Проверяем что клик был по кнопке "Удалить задачу"
-    if (event.target.dataset.action === 'delete') {
-       const parentNode = event.target.closest('.list-group-item');
-       parentNode.remove();
-    }
-    
-    // Проверка. Если в списке задач один элемент, показываем блок "Список дел пуст"
-    if (tasksList.children.length === 1) {
+    const parentNode = event.target.closest('.list-group-item');
+    parentNode.remove();
+
+        // Проверка. Если в списке задач один элемент, показываем блок "Список дел пуст"
+        if (tasksList.children.length === 1) {
         emptyList.classList.remove('none');
     }
+    
+
 }
 
 function doneTask(event) {
@@ -76,3 +77,4 @@ function doneTask(event) {
         taskTitle.classList.toggle('task-title--done');
     }
 }
+
