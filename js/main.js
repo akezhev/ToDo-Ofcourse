@@ -62,7 +62,7 @@ function deleteTask(event) {
     parentNode.remove();
 
         // Проверка. Если в списке задач один элемент, показываем блок "Список дел пуст"
-        if (tasksList.children.length === 1) {
+    if (tasksList.children.length === 1) {
         emptyList.classList.remove('none');
     }
     
@@ -70,11 +70,12 @@ function deleteTask(event) {
 }
 
 function doneTask(event) {
+    // Проверяем если клик был НЕ по кнопке "задача выполнена"
+    if (event.target.dataset.action !== 'done') return;
+
     // Проверяем что клик был по кнопке "задача выполнена"
-    if (event.target.dataset.action === 'done') {
-        const parentNode = event.target.closest('.list-group-item');
-        const taskTitle = parentNode.querySelector('.task-title');
-        taskTitle.classList.toggle('task-title--done');
-    }
+    const parentNode = event.target.closest('.list-group-item');
+    const taskTitle = parentNode.querySelector('.task-title');
+    taskTitle.classList.toggle('task-title--done');
 }
 
