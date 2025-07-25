@@ -12,6 +12,10 @@ tasksList.addEventListener('click', deleteTask);
 // Отмечаем задачу завершенной
 tasksList.addEventListener('click', doneTask);
 
+if (localStorage.getItem('tasksHTML')) {
+    tasksList.innerHTML = localStorage.getItem('tasksHTML');
+}
+
 // Функции
 function addTask(event) {
     // Отменяем стандартное поведение формы
@@ -52,6 +56,8 @@ function addTask(event) {
     if(tasksList.children.length > 1) {
         emptyList.classList.add('none')
     }
+
+    saveHTMLtoLS();
 }
 
 function deleteTask(event) {
@@ -66,6 +72,8 @@ function deleteTask(event) {
         emptyList.classList.remove('none');
     }
     
+    saveHTMLtoLS();
+
 
 }
 
@@ -77,5 +85,11 @@ function doneTask(event) {
     const parentNode = event.target.closest('.list-group-item');
     const taskTitle = parentNode.querySelector('.task-title');
     taskTitle.classList.toggle('task-title--done');
+
+    saveHTMLtoLS();
+
 }
 
+function saveHTMLtoLS() {
+    localStorage.setItem('tasksHTML', tasksList.innerHTML);
+}
