@@ -32,6 +32,16 @@ function addTask(event) {
         return;
     }
 
+    // Создаем новый объект задачи
+    const newTask = {
+        id: Date.now(),
+        text: taskText,
+        done: false,
+    };
+
+    // Добавляем задачу в массив
+    tasks.push(newTask);
+
     // Создаем HTML для новой задачи
     const taskHTML = `
         <li class="list-group-item d-flex justify-content-between task-item">
