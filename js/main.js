@@ -3,6 +3,8 @@ const taskInput = document.querySelector('#taskInput');
 const tasksList = document.querySelector('#tasksList');
 const emptyList = document.querySelector('#emptyList');
 
+let tasks = [];
+
 // Добавление задачи
 form.addEventListener('submit', addTask);
 
@@ -12,9 +14,9 @@ tasksList.addEventListener('click', deleteTask);
 // Отмечаем задачу завершенной
 tasksList.addEventListener('click', doneTask);
 
-if (localStorage.getItem('tasksHTML')) {
-    tasksList.innerHTML = localStorage.getItem('tasksHTML');
-}
+// if (localStorage.getItem('tasksHTML')) {
+//     tasksList.innerHTML = localStorage.getItem('tasksHTML');
+// }
 
 // Функции
 function addTask(event) {
@@ -57,7 +59,7 @@ function addTask(event) {
         emptyList.classList.add('none')
     }
 
-    saveHTMLtoLS();
+    // saveHTMLtoLS();
 }
 
 function deleteTask(event) {
@@ -72,7 +74,7 @@ function deleteTask(event) {
         emptyList.classList.remove('none');
     }
     
-    saveHTMLtoLS();
+    // saveHTMLtoLS();
 
 
 }
@@ -86,10 +88,12 @@ function doneTask(event) {
     const taskTitle = parentNode.querySelector('.task-title');
     taskTitle.classList.toggle('task-title--done');
 
-    saveHTMLtoLS();
+    // saveHTMLtoLS();
 
 }
 
-function saveHTMLtoLS() {
-    localStorage.setItem('tasksHTML', tasksList.innerHTML);
-}
+// Сохранение данных
+// function saveHTMLtoLS() {
+//     localStorage.setItem('tasksHTML', tasksList.innerHTML);
+// }
+
