@@ -45,7 +45,7 @@ function addTask(event) {
     // Создаем HTML для новой задачи
     const taskHTML = `
         <li class="list-group-item d-flex justify-content-between task-item">
-            <span class="task-title">${taskText}</span>
+            <span class="task-title">${newTask.text}</span>
             <div class="task-item__buttons">
                 <button type="button" data-action="done" class="btn-action">
                     <img src="./img/done.svg" alt="Done" width="28" height="28">
