@@ -42,10 +42,13 @@ function addTask(event) {
     // Добавляем задачу в массив
     tasks.push(newTask);
 
+    // Определяем CSS класс для задачи
+    const cssClass = newTask.done ? 'task-title task-title--done' : 'task-title';
+
     // Создаем HTML для новой задачи
     const taskHTML = `
-        <li class="list-group-item d-flex justify-content-between task-item">
-            <span class="task-title">${newTask.text}</span>
+        <li id="${newTask.id}" class="list-group-item d-flex justify-content-between task-item">
+            <span class="${cssClass}">${newTask.text}</span>
             <div class="task-item__buttons">
                 <button type="button" data-action="done" class="btn-action">
                     <img src="./img/done.svg" alt="Done" width="28" height="28">
