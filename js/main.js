@@ -19,7 +19,7 @@ tasksList.addEventListener('click', doneTask);
 // }
 
 // Функции
-function addTask(event) {
+function addTask(event) { 
     // Отменяем стандартное поведение формы
     event.preventDefault();
 
