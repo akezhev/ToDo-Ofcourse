@@ -80,6 +80,14 @@ function deleteTask(event) {
     if (event.target.dataset.action !== 'delete') return;
 
     const parentNode = event.target.closest('.list-group-item');
+
+    // Получаем id задачи
+    const id = parentNode.id;
+
+    // Удаляем задачу из массива
+    tasks = tasks.filter(task => task.id !== id);
+
+    // Удаляем задачу из массива
     parentNode.remove();
 
         // Проверка. Если в списке задач один элемент, показываем блок "Список дел пуст"
