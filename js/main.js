@@ -84,8 +84,11 @@ function deleteTask(event) {
     // Получаем id задачи
     const id = parentNode.id;
 
+    // Находим задачу в массиве
+    const index = tasks.findIndex(task => task.id === id);
+
     // Удаляем задачу из массива
-    tasks = tasks.filter(task => task.id !== id);
+    tasks.splice(index, 1);
 
     // Удаляем задачу из массива
     parentNode.remove();
