@@ -103,6 +103,7 @@ function checkEmptyList() {
             </li>
         `;
         tasksList.insertAdjacentHTML('beforeend', emptyListHTML);
+    }
 }
 
-checkEmptyList();   
+checkEmptyList();
