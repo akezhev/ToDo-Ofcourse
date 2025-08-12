@@ -67,12 +67,6 @@ function addTask(event) {
     taskInput.value = '';
     taskInput.focus();
 
-    // Проверка. Если в списке более 1-го элемента, скрываем блок
-    if(tasksList.children.length > 1) {
-        emptyList.classList.add('none')
-    }
-
-    // saveHTMLtoLS();
 }
 
 function deleteTask(event) {
@@ -91,12 +85,6 @@ function deleteTask(event) {
     // Удаляем задачу из массива
     parentNode.remove();
 
-        // Проверка. Если в списке задач один элемент, показываем блок "Список дел пуст"
-    if (tasksList.children.length === 1) {
-        emptyList.classList.remove('none');
-    }
-    
-    // saveHTMLtoLS();
 
 
 }
@@ -119,3 +107,13 @@ function doneTask(event) {
 //     localStorage.setItem('tasksHTML', tasksList.innerHTML);
 // }
 
+function checkEmptyList() {
+    const tasksItem = document.querySelectorAll('.task-item');
+    if (tasksItem.length === 0) {
+        emptyList.classList.remove('none');
+    } else {
+        emptyList.classList.add('none');
+    }
+}
+
+checkEmptyList();   
