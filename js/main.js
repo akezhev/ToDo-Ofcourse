@@ -4,6 +4,8 @@ const tasksList = document.querySelector('#tasksList');
 const emptyList = document.querySelector('#emptyList');
 
 let tasks = [];
+checkEmptyList();
+
 
 // Добавление задачи
 form.addEventListener('submit', addTask);
@@ -62,6 +64,8 @@ function addTask(event) {
     // Очищаем поле ввода
     taskInput.value = '';
     taskInput.focus();
+
+    checkEmptyList();
 }
 
 function deleteTask(event) {
@@ -79,6 +83,8 @@ function deleteTask(event) {
 
     // Удаляем задачу из массива
     parentNode.remove();
+
+    checkEmptyList();
 }
 
 function doneTask(event) {
