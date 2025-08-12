@@ -94,6 +94,7 @@ function doneTask(event) {
 
 }
 
+// Проверяем, есть ли задачи в списке
 function checkEmptyList() {
     if (tasks.length === 0) {
         const emptyListHTML = `
@@ -102,7 +103,16 @@ function checkEmptyList() {
                 <div class="empty-list__title">Список дел пуст</div>
             </li>
         `;
+
+        // Добавляем блок "Список дел пуст" в список
         tasksList.insertAdjacentHTML('beforeend', emptyListHTML);
+    }
+
+    // Если задачи есть, удаляем блок "Список дел пуст"
+    if (tasks.length > 0) {
+        const emptyListElement = document.querySelector('#emptyList');
+        // Удаляем блок "Список дел пуст" из списка
+        emptyListElement ? emptyListElement.remove() : null;
     }
 }
 
