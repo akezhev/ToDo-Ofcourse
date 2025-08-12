@@ -14,10 +14,6 @@ tasksList.addEventListener('click', deleteTask);
 // Отмечаем задачу завершенной
 tasksList.addEventListener('click', doneTask);
 
-// if (localStorage.getItem('tasksHTML')) {
-//     tasksList.innerHTML = localStorage.getItem('tasksHTML');
-// }
-
 // Функции
 function addTask(event) { 
     // Отменяем стандартное поведение формы
@@ -66,7 +62,6 @@ function addTask(event) {
     // Очищаем поле ввода
     taskInput.value = '';
     taskInput.focus();
-
 }
 
 function deleteTask(event) {
@@ -84,9 +79,6 @@ function deleteTask(event) {
 
     // Удаляем задачу из массива
     parentNode.remove();
-
-
-
 }
 
 function doneTask(event) {
@@ -102,18 +94,15 @@ function doneTask(event) {
 
 }
 
-// Сохранение данных
-// function saveHTMLtoLS() {
-//     localStorage.setItem('tasksHTML', tasksList.innerHTML);
-// }
-
 function checkEmptyList() {
-    const tasksItem = document.querySelectorAll('.task-item');
-    if (tasksItem.length === 0) {
-        emptyList.classList.remove('none');
-    } else {
-        emptyList.classList.add('none');
-    }
+    if (tasks.length === 0) {
+        const emptyListHTML = `
+            <li id="emptyList" class="list-group-item empty-list">
+                <img src="./img/leaf.svg" alt="Empty" width="128" class="mt-3 mb-3">
+                <div class="empty-list__title">Список дел пуст</div>
+            </li>
+        `;
+        tasksList.insertAdjacentHTML('beforeend', emptyListHTML);
 }
 
 checkEmptyList();   
