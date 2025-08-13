@@ -40,6 +40,9 @@ function addTask(event) {
     // Добавляем задачу в массив
     tasks.push(newTask);
 
+    // Сохраняем задачу в localStorage
+    saveToLocalStorage()
+
     // Определяем CSS класс для задачи
     const cssClass = newTask.done ? 'task-title task-title--done' : 'task-title';
 
@@ -81,6 +84,9 @@ function deleteTask(event) {
     // Удаляем задачу из массива
     tasks.splice(index, 1);
 
+    // Сохраняем задачу в localStorage
+    saveToLocalStorage()
+
     // Удаляем задачу из массива
     parentNode.remove();
 
@@ -93,10 +99,23 @@ function doneTask(event) {
 
     // Проверяем что клик был по кнопке "задача выполнена"
     const parentNode = event.target.closest('.list-group-item');
+
+    // Получаем id задачи
+    const id = Number(parentNode.id);
+    // Находим задачу в массиве
+    const index = tasks.findIndex(task => task.id === id);
+    // Меняем класс задачи
+    tasks[index].done = !tasks[index].done;
+
+
+    // Сохраняем задачу в localStorage
+    saveToLocalStorage();
+
+    // Получаем задачу из списка
     const taskTitle = parentNode.querySelector('.task-title');
+    // Меняем класс задачи
     taskTitle.classList.toggle('task-title--done');
 
-    // saveHTMLtoLS();
 
 }
 
@@ -123,3 +142,12 @@ function checkEmptyList() {
 }
 
 checkEmptyList();
+
+function saveToLocalStorage() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function getFromLocalStorage() {
+    const data = localStorage.getItem('tasks');
+    return data ? JSON.parse(data) : [];
+}
