@@ -143,10 +143,12 @@ function checkEmptyList() {
 
 checkEmptyList();
 
+// Сохраняем задачу в localStorage
 function saveToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
+// Получаем задачу из localStorage
 function getFromLocalStorage() {
     const data = localStorage.getItem('tasks');
     return data ? JSON.parse(data) : [];
