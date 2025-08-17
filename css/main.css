@@ -34,6 +34,12 @@ button {
     margin-bottom: 30px;
 }
 
+#emptyList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
 .task-title--done {
     text-decoration: line-through;

@@ -89,10 +89,9 @@ function doneTask(event) {
     // Получаем id задачи
     const id = Number(parentNode.id);
     // Находим задачу в массиве  
-    const task = task.find(task => task.id === id);
+    const task = tasks.find((task) => task.id === id);
     // Меняем класс задачи
     task.done = !task.done;
-
 
     // Сохраняем задачу в localStorage
     saveToLocalStorage();
@@ -101,8 +100,6 @@ function doneTask(event) {
     const taskTitle = parentNode.querySelector('.task-title');
     // Меняем класс задачи
     taskTitle.classList.toggle('task-title--done');
-
-
 }
 
 // Проверяем, есть ли задачи в списке
