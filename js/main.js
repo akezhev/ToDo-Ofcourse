@@ -4,15 +4,20 @@ const tasksList = document.querySelector('#tasksList');
 const emptyList = document.querySelector('#emptyList');
 
 let tasks = [];
-checkEmptyList();
 
+// Получаем задачу из localStorage
+if (localStorage.getItem('tasks')) {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+    // Рендерим задачи
+    tasks.forEach(task => renderTasks(task));
+}
+
+checkEmptyList();
 
 // Добавление задачи
 form.addEventListener('submit', addTask);
-
 // Удаление задачи
 tasksList.addEventListener('click', deleteTask);
-
 // Отмечаем задачу завершенной
 tasksList.addEventListener('click', doneTask);
 
@@ -43,26 +48,8 @@ function addTask(event) {
     // Сохраняем задачу в localStorage
     saveToLocalStorage()
 
-    // Определяем CSS класс для задачи
-    const cssClass = newTask.done ? 'task-title task-title--done' : 'task-title';
-
-    // Создаем HTML для новой задачи
-    const taskHTML = `
-        <li id="${newTask.id}" class="list-group-item d-flex justify-content-between task-item">
-            <span class="${cssClass}">${newTask.text}</span>
-            <div class="task-item__buttons">
-                <button type="button" data-action="done" class="btn-action">
-                    <img src="./img/done.svg" alt="Done" width="28" height="28">
-                </button>
-                <button type="button" data-action="delete" class="btn-action">
-                    <img src="./img/delete.svg" alt="Delete" width="28" height="28">
-                </button>
-            </div>
-        </li>
-    `;
-
-    // Добавляем задачу в список    
-    tasksList.insertAdjacentHTML('beforeend', taskHTML);
+    // Рендерим задачу
+    renderTasks(newTask);
 
     // Очищаем поле ввода
     taskInput.value = '';
@@ -79,10 +66,9 @@ function deleteTask(event) {
 
     // Получаем id задачи
     const id = Number(parentNode.id);
-    // Находим задачу в массиве
-    const index = tasks.findIndex(task => task.id === id);
-    // Удаляем задачу из массива
-    tasks.splice(index, 1);
+    
+    // 
+    tasks = tasks.filter((task) => task.id !== id)
 
     // Сохраняем задачу в localStorage
     saveToLocalStorage()
@@ -102,10 +88,10 @@ function doneTask(event) {
 
     // Получаем id задачи
     const id = Number(parentNode.id);
-    // Находим задачу в массиве
-    const index = tasks.findIndex(task => task.id === id);
+    // Находим задачу в массиве  
+    const task = task.find(task => task.id === id);
     // Меняем класс задачи
-    tasks[index].done = !tasks[index].done;
+    task.done = !task.done;
 
 
     // Сохраняем задачу в localStorage
@@ -148,8 +134,26 @@ function saveToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-// Получаем задачу из localStorage
-function getFromLocalStorage() {
-    const data = localStorage.getItem('tasks');
-    return data ? JSON.parse(data) : [];
+// Рендерим задачу
+function renderTasks(task) {
+    // Определяем CSS класс для задачи
+    const cssClass = task.done ? 'task-title task-title--done' : 'task-title';
+
+    // Создаем HTML для новой задачи
+    const taskHTML = `
+        <li id="${task.id}" class="list-group-item d-flex justify-content-between task-item">
+            <span class="${cssClass}">${task.text}</span>
+            <div class="task-item__buttons">
+                <button type="button" data-action="done" class="btn-action">
+                    <img src="./img/done.svg" alt="Done" width="28" height="28">
+                </button>
+                <button type="button" data-action="delete" class="btn-action">
+                    <img src="./img/delete.svg" alt="Delete" width="28" height="28">
+                </button>
+            </div>
+        </li>
+    `;
+
+    // Добавляем задачу в список    
+    tasksList.insertAdjacentHTML('beforeend', taskHTML);
 }
